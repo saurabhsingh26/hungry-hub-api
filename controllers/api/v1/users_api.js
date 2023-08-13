@@ -25,11 +25,13 @@ module.exports.createSession = async function(req,res){
 
         if (!user || user.password != req.body.password) {
           return res.json(422, {
+            success: false,
             message: "Invalid username or password",
           });
         }
 
         return res.status(200).json({
+          success: true,
           message: "Sign in successful, here is your token please keep it safe",
           data: {
             token: jwt.sign(user.toJSON(), "api", { expiresIn: "100000000" }),
@@ -38,7 +40,8 @@ module.exports.createSession = async function(req,res){
 
     }catch(err){
         return res.status(500).json({
-            message: "Internal Server Error"
+          success: false,
+          message: "Internal Server Error",
         });
     }
 }
