@@ -24,7 +24,7 @@ module.exports.createSession = async function(req,res){
         let user = await Users.findOne({ email: req.body.email });
 
         if (!user || user.password != req.body.password) {
-          return res.json(422, {
+          return res.status(422).json({
             success: false,
             message: "Invalid username or password",
           });
