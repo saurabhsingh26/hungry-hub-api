@@ -5,6 +5,8 @@ const db = require('./config/mongoose');
 // const passport = require('passport');
 const passportJWT = require('./config/passport-jwt-strategy');
 
+app.use(cors());
+
 app.use(express.urlencoded());
 
 app.use('/',require('./routes'));
