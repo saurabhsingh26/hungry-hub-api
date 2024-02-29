@@ -1,12 +1,10 @@
 const express = require('express');
 const port = 9000;
 const app = express()
-var cors = require("cors");
 const db = require('./config/mongoose');
 // const passport = require('passport');
 const passportJWT = require('./config/passport-jwt-strategy');
 
-app.use(cors());
 
 app.use(express.urlencoded());
 
